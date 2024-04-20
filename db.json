@@ -1,4 +1,28 @@
 {
-    "volunteer": [],
-    "petitions": []
+    "volunteer": [
+        {
+            "title": "Clean up Grant Park",
+            "desc": "help us clean Grant Park",
+            "loc": "Grant Park",
+            "date": "May 4",
+            "time": "2pm",
+            "img": "https://www.waco-texas.com/files/sharedassets/public/v/1/departments/parks-amp-recreation/images/parks-pictures/cameron-park/cameron-park.jpg?dimension=pageimage&w=480",
+            "ts": 1713655090857,
+            "signups": [
+                "sonit@gmail.com"
+            ]
+        }
+    ],
+    "petitions": [
+        {
+            "title": "Stop Grant Park Destruction",
+            "desc": "Mayor mark wants to tear down Grant Park",
+            "img": "https://www.waco-texas.com/files/sharedassets/public/v/1/departments/parks-amp-recreation/images/parks-pictures/cameron-park/cameron-park.jpg?dimension=pageimage&w=480",
+            "ts": 1713655150634,
+            "votes": [
+                "sonit@gmail.com"
+            ],
+            "count": 1
+        }
+    ]
 }
