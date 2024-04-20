@@ -23,11 +23,8 @@ document.getElementById("createPost").addEventListener("click", function(){
   if (document.activeElement.id=="createPost"){
     const title = prompt("Title?")
     const desc = prompt("Description?")
-    const loc = prompt("Location?")
-    const date = prompt("Date?")
-    const time = prompt("Time?")
     const img = encodeURIComponent(prompt("Image?"))
-    fetch(`../addPost/${title}/${desc}/${loc}/${date}/${time}/${img}/`).then(()=>{
+    fetch(`../addPet/${title}/${desc}/${img}/`).then(()=>{
       refresh()
     })
   }
@@ -35,7 +32,7 @@ document.getElementById("createPost").addEventListener("click", function(){
 
 function refresh(){
   (async () => {
-    const rawResponse = await fetch('../vData', {
+    const rawResponse = await fetch('../pData', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -61,13 +58,13 @@ function refresh(){
       p2.innerText = i.desc
       let p3 = document.createElement("p")
       p3.classList.add("details")
-      p3.innerText = `${i.loc} • ${i.date}, ${i.time}`
+      p3.innerText = `${i.count} votes`
       let btn = document.createElement('button')
-      btn.innerText = "Sign Up"
+      btn.innerText = "Vote"
       console.log(i.signups)
-      if (i.signups.length>0){
-        if (i.signups.indexOf(localStorage.getItem("email"))!=-1){
-          btn.innerText = "Signed Up"
+      if (i.votes.length>0){
+        if (i.votes.indexOf(localStorage.getItem("email"))!=-1){
+          btn.innerText = "Voted"
         }
       }
       btn.classList.add("signUpBtn")
@@ -78,9 +75,10 @@ function refresh(){
       div1.appendChild(div2)
       document.getElementById("content").appendChild(div1)
       btn.addEventListener("click", function(){
-        if (btn.innerText=="Sign Up"){
-          btn.innerText = "Signed Up"
-          fetch(`../subscribeToPost/${i.title}/${localStorage.getItem("email")}/`).then(()=>{
+        if (btn.innerText=="Vote"){
+          btn.innerText = "Voted"
+          p3.innerText = `${i.count+1} votes`
+          fetch(`../vote/${i.title}/${localStorage.getItem("email")}/`).then(()=>{
             refresh()
           })
         }
